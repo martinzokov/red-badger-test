@@ -1,7 +1,7 @@
 package org.example.application.commands
 
-class RobotCommandInvoker {
-    fun executeCommand(command: RobotCommand) {
+class RobotCommandInvoker: CommandInvoker {
+    override fun executeCommand(command: RobotCommand) {
         command.execute()
     }
 }

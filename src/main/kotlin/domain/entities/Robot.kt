@@ -2,6 +2,7 @@ package org.example.domain.entities
 
 import org.example.domain.values.Orientation
 import org.example.domain.values.Position
+import org.example.domain.values.RobotReport
 import org.example.domain.values.RobotStatus
 
 class Robot(var position: Position, var orientation: Orientation, var status: RobotStatus = RobotStatus.ALIVE) {
@@ -25,4 +26,6 @@ class Robot(var position: Position, var orientation: Orientation, var status: Ro
     fun turnLeft(){
         orientation = orientation.left()
     }
+
+    fun getReport(): RobotReport = RobotReport(position, orientation, status)
 }
