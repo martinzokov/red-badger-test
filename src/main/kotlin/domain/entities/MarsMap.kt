@@ -11,10 +11,10 @@ class MarsMap(private val mapBoundary: Position): MissionMap {
         scents.any { it.position == position && it.orientation == orientation }
 
     override fun isWithinBounds(position: Position): Boolean {
-        return position.xPosition > mapBoundary.xPosition
-                || position.yPosition > mapBoundary.yPosition
-                || position.xPosition < 0
-                || position.yPosition < 0
+        return position.xPosition <= mapBoundary.xPosition
+                && position.yPosition <= mapBoundary.yPosition
+                && position.xPosition >= 0
+                && position.yPosition >= 0
     }
 
     override fun addScent(position: Position, orientation: Orientation) {
