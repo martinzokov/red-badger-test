@@ -29,6 +29,7 @@ class MarsRobotMovementService {
         val result = robot.isAlive()
 
         assertFalse(result)
+        assertEquals(Position(5, 5), robot.position)
         verify { map.addScent(Position(5,5), Orientation.NORTH) }
     }
 

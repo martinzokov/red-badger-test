@@ -48,4 +48,25 @@ class MarsMissionRunnerIntegrationTest {
         assertEquals(Orientation.SOUTH, report3.orientation)
         assertEquals(report3.robotStatus, RobotStatus.ALIVE)
     }
+
+    @Test
+    fun deployMultipleRobots_avoidScent(){
+        val runner = MarsMissionRunner(1, 1)
+
+        runner.deployRobot(1, 1, Orientation.EAST)
+        val report = runner.receiveRobotInstructions("F")
+
+        assertEquals(1, report.position.xPosition)
+        assertEquals(1, report.position.yPosition)
+        assertEquals(Orientation.EAST, report.orientation)
+        assertEquals(report.robotStatus, RobotStatus.LOST)
+
+        runner.deployRobot(1, 1, Orientation.EAST)
+        val report2 = runner.receiveRobotInstructions("F")
+
+        assertEquals(1, report2.position.xPosition)
+        assertEquals(1, report2.position.yPosition)
+        assertEquals(Orientation.EAST, report2.orientation)
+        assertEquals(report2.robotStatus, RobotStatus.ALIVE)
+    }
 }

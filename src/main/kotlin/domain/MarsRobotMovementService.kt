@@ -10,10 +10,11 @@ class MarsRobotMovementService(private val map: MissionMap): RobotMovementServic
         val lastKnownPosition = robot.position
         if (!map.scentExistsAt(lastKnownPosition, robot.orientation)) {
             val nextPosition = robot.getNextPosition()
-            robot.position = nextPosition
             if (!map.isWithinBounds(nextPosition)) {
                 robot.status(RobotStatus.LOST)
                 map.addScent(lastKnownPosition, robot.orientation)
+            } else {
+                robot.position = nextPosition
             }
         }
     }
