@@ -19,4 +19,10 @@ enum class Orientation(val value: String) {
         SOUTH -> WEST
         WEST -> NORTH
     }
+
+    companion object {
+        fun fromString(value: String): Orientation? {
+            return entries.firstOrNull { it.value == value }
+        }
+    }
 }

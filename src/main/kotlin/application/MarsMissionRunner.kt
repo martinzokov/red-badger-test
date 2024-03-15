@@ -12,7 +12,7 @@ import org.example.domain.values.RobotReport
 
 class MarsMissionRunner(mapWidth: Int, mapHeight: Int) {
     private val robotInstructionService: RobotInstructionService
-    private lateinit var currentRobot: Robot
+    lateinit var currentRobot: Robot
 
     init {
         val map = MarsMap(Position(mapWidth, mapHeight))
